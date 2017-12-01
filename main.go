@@ -1,4 +1,4 @@
-//go:generate goagen bootstrap -d github.com/sky0621/try-goa/design
+//go:generate goagen bootstrap -d github.com/sky0621/try-goa/cellar/design
 
 package main
 

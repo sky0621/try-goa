@@ -4,7 +4,7 @@
 //
 // Command:
 // $ goagen
-// --design=github.com/sky0621/try-goa/design
+// --design=github.com/sky0621/try-goa/cellar/design
 // --out=$(GOPATH)\src\github.com\sky0621\try-goa
 // --version=v1.3.0
 
