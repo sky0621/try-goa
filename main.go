@@ -1,4 +1,4 @@
-//go:generate goagen bootstrap -d github.com/sky0621/try-goa/cellar/design
+//go:generate goagen bootstrap -d github.com/sky0621/try-goa/fs
 
 package main
 
@@ -10,7 +10,7 @@ import (
 
 func main() {
 	// Create service
-	service := goa.New("cellar")
+	service := goa.New("fs")
 
 	// Mount middleware
 	service.Use(middleware.RequestID())
@@ -18,12 +18,12 @@ func main() {
 	service.Use(middleware.ErrorHandler(service, true))
 	service.Use(middleware.Recover())
 
-	// Mount "bottle" controller
-	c := NewBottleController(service)
-	app.MountBottleController(service, c)
+	// Mount "movie" controller
+	c := NewMovieController(service)
+	app.MountMovieController(service, c)
 
 	// Start service
-	if err := service.ListenAndServe(":8080"); err != nil {
+	if err := service.ListenAndServe(":8585"); err != nil {
 		service.LogError("startup", "err", err)
 	}
 

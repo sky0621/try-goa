@@ -4,62 +4,56 @@ consumes:
 - application/gob
 - application/x-gob
 definitions:
-  GoaExampleBottle:
-    description: A bottle of wine (default view)
+  Movie:
+    description: Movie Response Type (default view)
     example:
-      href: Voluptates non excepturi.
-      id: 6.9965735e+18
-      name: Tenetur et saepe ratione debitis enim sapiente.
+      movieId: 8.4600894e+18
+      movieName: Reiciendis ut odio voluptatem saepe quis voluptate.
     properties:
-      href:
-        description: API href for making requests on the bottle
-        example: Voluptates non excepturi.
-        type: string
-      id:
-        description: Unique bottle ID
-        example: 6.9965735e+18
+      movieId:
+        description: Unique Movie ID
+        example: 8.4600894e+18
         format: int64
         type: integer
-      name:
-        description: Name of wine
-        example: Tenetur et saepe ratione debitis enim sapiente.
+      movieName:
+        description: Movie Name
+        example: Reiciendis ut odio voluptatem saepe quis voluptate.
         type: string
     required:
-    - id
-    - href
-    - name
-    title: 'Mediatype identifier: application/vnd.goa.example.bottle+json; view=default'
+    - movieId
+    - movieName
+    title: 'Mediatype identifier: application/vnd.movie+json; view=default'
     type: object
-host: localhost:8080
+host: localhost:8585
 info:
-  description: A simple goa service
-  title: The virtual wine cellar
+  description: A simple movie
+  title: Fan Movie
   version: ""
 paths:
-  /bottles/{bottleID}:
+  /movies/{movieId}:
     get:
-      description: Get bottle by id
-      operationId: bottle#show
+      description: Get 1 Movie Information
+      operationId: movie#show
       parameters:
-      - description: Bottle ID
+      - description: Unique Movie ID
         in: path
-        name: bottleID
+        name: movieId
         required: true
         type: integer
       produces:
-      - application/vnd.goa.example.bottle+json
+      - application/vnd.movie+json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/GoaExampleBottle'
+            $ref: '#/definitions/Movie'
         "404":
           description: Not Found
       schemes:
       - http
-      summary: show bottle
+      summary: show movie
       tags:
-      - bottle
+      - movie
 produces:
 - application/json
 - application/xml
@@ -71,7 +65,7 @@ responses:
   OK:
     description: OK
     schema:
-      $ref: '#/definitions/GoaExampleBottle'
+      $ref: '#/definitions/Movie'
 schemes:
 - http
 swagger: "2.0"
